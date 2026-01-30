@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <img src="lantern.png" alt="Lantern" class="lantern lantern-left">
+        <img src="lantern.png" alt="Lantern" class="lantern lantern-right">
+        <img src="stars.gif" alt="Stars" class="stars">
+        <img src="stars 2.gif" alt="Stars 2" class="stars2">
+        <div class="card-container">
+            <img src="cutebear.png" alt="Cute Bear" class="bear">
+            <div class="card" id="card">
+                <div class="card-front">
+                    <p><span id="typed-text"></span><span class="cursor">|</span></p>
+                    <div class="click-me">click-me to see the AI-Powered Study Platform 'ChatGT'</div>
+                </div>
+                <div class="card-back">
+                    <h2 class="video-title">Presenting ChatGT...</h2>
+                    <video class="card-video" autoplay loop muted playsinline>
+                        <source src="Study-Buddy.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+        <script>
+            const text = "Hi, my name is Grace. I'm a second-year Computer Science major. I'm passionate about using technology to make a positive impact, especially by increasing access to educational resources. This past semester, I worked on an AI-powered study platform through a VIP that provides free, personalized academic support to students, helping lower barriers to academic success.";
+            const typedTextElement = document.getElementById('typed-text');
+            let index = 0;
+            
+            function typeText() {
+                if (index < text.length) {
+                    typedTextElement.textContent += text.charAt(index);
+                    index++;
+                    setTimeout(typeText, 20);
+                } else {
+                    document.querySelector('.cursor').style.display = 'none';
+                    document.querySelector('.click-me').style.display = 'block';
+                }
+            }
+            
+            // Start typing when page loads
+            window.addEventListener('load', typeText);
+            
+            // Card flip functionality
+            const card = document.getElementById('card');
+            const video = document.querySelector('.card-video');
+            card.addEventListener('click', function() {
+                card.classList.toggle('flipped');
+                if (card.classList.contains('flipped')) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            });
+        </script>
+    </body>
+</html>
